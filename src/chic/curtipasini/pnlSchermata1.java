@@ -15,6 +15,31 @@ public class pnlSchermata1 extends javax.swing.JPanel {
      */
     public pnlSchermata1() {
         initComponents();
+   // 1. Sfondo del pannello (il tuo bianco/grigio chiaro)
+   this.setBackground(new java.awt.Color(247, 249, 249));
+   // 2. Stile Bottone ACCEDI (Blu scuro)
+   jButton1.setBackground(new java.awt.Color(32, 129, 195));
+   jButton1.setForeground(java.awt.Color.WHITE);
+   jButton1.setFocusPainted(false);
+   jButton1.setBorderPainted(false); // Toglie il bordo brutto
+   jButton1.setContentAreaFilled(true);
+   jButton1.setOpaque(true);
+   jButton1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+   // 3. Stile Bottone REGISTRATI (Turchese)
+   jButton2.setBackground(new java.awt.Color(120, 213, 215));
+   jButton2.setForeground(java.awt.Color.WHITE);
+   jButton2.setFocusPainted(false);
+   jButton2.setBorderPainted(false);
+   jButton2.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+   // 4. Modernizziamo i campi di testo (Togliamo l'effetto 3D brutto)
+   javax.swing.border.Border lineBorder = javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 216, 212), 1);
+   jTextField1.setBorder(lineBorder);
+   jTextField2.setBorder(lineBorder);
+   jTextField3.setBorder(lineBorder);
+   // 5. Titolo "Chic" più grande
+   jLabel2.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 24));
+   jLabel2.setForeground(new java.awt.Color(32, 129, 195));
+   this.setOpaque(true); // Dice al pannello di mostrare il suo colore di sfondo
     }
 
     /**
@@ -37,6 +62,9 @@ public class pnlSchermata1 extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(247, 249, 249));
+        setForeground(new java.awt.Color(247, 249, 249));
 
         jLabel1.setText("jLabel1");
 
@@ -119,7 +147,10 @@ public class pnlSchermata1 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+       pnlRegistrazione reg = new pnlRegistrazione(); // Crea il nuovo pannello
+this.getParent().add(reg); // Lo aggiunge alla finestra principale
+reg.setVisible(true); // Lo rende visibile
+this.setVisible(false); // Nasconde il login
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
