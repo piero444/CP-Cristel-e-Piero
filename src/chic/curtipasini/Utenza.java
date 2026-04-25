@@ -12,7 +12,7 @@ import eccezioni.PasswordNonValidaException;
 
 import java.io.*;
 
-public class Utenza implements Controlli {
+public class Utenza {
 
     private String nome;  //     GESTIRE TUTTI QUESTI ERRORI TRAMITE ECCEZIONI  
     private String cognome;  // controllo no numeri caratteri strani ecc..
@@ -33,7 +33,7 @@ public class Utenza implements Controlli {
 
     }
 
-    public boolean validazionePW(String pw) throws PasswordNonValidaException {
+    public static boolean validazionePW(String pw) throws PasswordNonValidaException {
         if (pw.length() > minPW && pw.length() < maxPW) {
             // DIMENSIONE VALIDA
             int t = 0;    // VARIABILE CONTROLLO PRESENZA DI ALMENO UN CARATTERE MAIUSCOLO
@@ -171,73 +171,72 @@ public class Utenza implements Controlli {
     }
 
     // IMPLEMENTAZIONE DEI METODI(INTERFACCIA) PER I CONTROLLI 
-    public void controllaNome(String nome) throws NomeNonValidoException {
-        int t=0; // è PRESENTE UN NUMERO
+    public static void controllaNome(String nome) throws NomeNonValidoException {
+        int t = 0; // è PRESENTE UN NUMERO
         for (int i = 0; i < nome.length(); i++) {
-                
-                if (Character.isDigit(nome.charAt(i))) //  è UN NUMERO ?
-                {
-                    // SI è UN NUMERO
-                    t = 1;
-                }
+
+            if (Character.isDigit(nome.charAt(i))) //  è UN NUMERO ?
+            {
+                // SI è UN NUMERO
+                t = 1;
             }
-        
-        if(t==0 && !nome.matches( ".*[|!£$%&/()=?'^*+\\\\[\\\\]@#§°\\\\-_;,:.`~].*"))// puoi controllare anche i numeri 0-9
+        }
+
+        if (t == 0 && !nome.matches(".*[|!£$%&/()=?'^*+\\\\[\\\\]@#§°\\\\-_;,:.`~].*"))// puoi controllare anche i numeri 0-9
         {
             //  NESSUN CARATTERE SPECIALE O NUMERO TROVATO (VA BENE)
-            
+
         }
-        
+
     }
 
     // controllo no numeri caratteri strani ecc..
-    public void controllaCognome(String cognome) throws CognomeNonValidoException {
-        int t=0; // è PRESENTE UN NUMERO
+    public static void controllaCognome(String cognome) throws CognomeNonValidoException {
+        int t = 0; // è PRESENTE UN NUMERO
         for (int i = 0; i < cognome.length(); i++) {
-                
-                if (Character.isDigit(cognome.charAt(i))) //  è UN NUMERO ?
-                {
-                    // SI è UN NUMERO
-                    t = 1;
-                }
+
+            if (Character.isDigit(cognome.charAt(i))) //  è UN NUMERO ?
+            {
+                // SI è UN NUMERO
+                t = 1;
             }
-        
-        if(t==0 && !cognome.matches( ".*[|!£$%&/()=?'^*+\\\\[\\\\]@#§°\\\\-_;,:.`~].*"))// puoi controllare anche i numeri 0-9
+        }
+
+        if (t == 0 && !cognome.matches(".*[|!£$%&/()=?'^*+\\\\[\\\\]@#§°\\\\-_;,:.`~].*"))// puoi controllare anche i numeri 0-9
         {
             //  NESSUN CARATTERE SPECIALE O NUMERO TROVATO (VA BENE)
-            
+
         }
     }
 
     //altezza da 0 a 250
-    public void controllaAltezza(int altezza) throws AltezzaNonValidaException {
+    public static void controllaAltezza(int altezza) throws AltezzaNonValidaException {
         if (altezza < 0 || altezza > 250) {
             throw new AltezzaNonValidaException();
         }
     }
 
     // da 0 a 120
-    public void controllaCirconferenza(int circonferenza) throws CirconferenzaVitaNonValidaException {
+    public static void controllaCirconferenza(int circonferenza) throws CirconferenzaVitaNonValidaException {
 
     }
 
     // da 0 a 99
-    public void controllaEta(int eta) throws EtaNonValidaException {
+    public static void controllaEta(int eta) throws EtaNonValidaException {
 
     }
 
     // da 0 a 120
-    public void controllaLarghezzaS(int larghezza) throws LarghezzaSpalleNonValidaException {
+    public static void controllaLarghezzaS(int larghezza) throws LarghezzaSpalleNonValidaException {
 
     }
 
     // da 15 a 50 EU
-    public void controllaNumeroP(int numero) throws NumeroPiedeNonValidoException { 
+    public static void controllaNumeroP(int numero) throws NumeroPiedeNonValidoException {
 
     }
 
-
-    public void controllaTaglia(Taglia taglia) throws TagliaNonValidaException {
+    public static void controllaTaglia(Taglia taglia) throws TagliaNonValidaException {
 
     }
 

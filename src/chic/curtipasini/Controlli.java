@@ -10,8 +10,8 @@ import eccezioni.NomeNonValidoException;
 import eccezioni.NumeroPiedeNonValidoException;
 import eccezioni.TagliaNonValidaException;
 
-public interface Controlli {
-    
+public interface Controlli {    //   PER ORA INUTILE COME ME
+     
     // TUTTI I METODI USATI PER I CONTROLLI CON LE RISPETTIVE ECCEZIONI
     
     public void controllaNome(String nome) throws NomeNonValidoException;

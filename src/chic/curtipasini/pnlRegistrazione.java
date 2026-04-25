@@ -9,35 +9,32 @@ package chic.curtipasini;
  * @author pc
  */
 public class pnlRegistrazione extends javax.swing.JPanel {
-   /**
-    * Creates new form pnlRegistrazione
-    */
-   public pnlRegistrazione() {
-       initComponents();
-       // Colore di sfondo del pannello (F7F9F9 della tua palette)
-this.setBackground(new java.awt.Color(247, 249, 249));
+
+    /**
+     * Creates new form pnlRegistrazione
+     */
+    public pnlRegistrazione() {
+        initComponents();
+        // Colore di sfondo del pannello (F7F9F9 della tua palette)
+        this.setBackground(new java.awt.Color(247, 249, 249));
 // Stile del Bottone "Conferma"
-btnConferma.setBackground(new java.awt.Color(32, 129, 195)); // Blu scuro palette
-btnConferma.setForeground(java.awt.Color.WHITE); // Scritta bianca
-btnConferma.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+        btnConferma.setBackground(new java.awt.Color(32, 129, 195)); // Blu scuro palette
+        btnConferma.setForeground(java.awt.Color.WHITE); // Scritta bianca
+        btnConferma.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
 // Stile del riquadro "Camerino" (pnlModellino)
-pnlModellino.setBackground(java.awt.Color.WHITE);
-pnlModellino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(32, 129, 195), 2));
-       
-       
-       
-       
-       
-       // Sfondo del pannello principale (quello che contiene tutto)
-       this.setBackground(new java.awt.Color(247, 249, 249));
-       // Stile per il "Camerino" (il pannello che hai chiamato pnlModellino)
-       pnlModellino.setBackground(java.awt.Color.WHITE);
-       pnlModellino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(32, 129, 195), 2));
-       // Stile per il bottone di conferma
-       btnConferma.setBackground(new java.awt.Color(32, 129, 195));
-       btnConferma.setForeground(java.awt.Color.WHITE);
-       btnConferma.setFocusPainted(false);
-   }
+        pnlModellino.setBackground(java.awt.Color.WHITE);
+        pnlModellino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(32, 129, 195), 2));
+
+        // Sfondo del pannello principale (quello che contiene tutto)
+        this.setBackground(new java.awt.Color(247, 249, 249));
+        // Stile per il "Camerino" (il pannello che hai chiamato pnlModellino)
+        pnlModellino.setBackground(java.awt.Color.WHITE);
+        pnlModellino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(32, 129, 195), 2));
+        // Stile per il bottone di conferma
+        btnConferma.setBackground(new java.awt.Color(32, 129, 195));
+        btnConferma.setForeground(java.awt.Color.WHITE);
+        btnConferma.setFocusPainted(false);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,6 +99,11 @@ pnlModellino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.C
 
         cmbTaglia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "S ", "M", "L", "XL ", "XXL ", " ", " " }));
         cmbTaglia.setPreferredSize(new java.awt.Dimension(64, 22));
+        cmbTaglia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbTagliaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -172,8 +174,26 @@ pnlModellino.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.C
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConfermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfermaActionPerformed
-        // TODO add your handling code here:
+        //  CONFERMA REGISTRAZIONE
+
+        //  PRENDO I DATI DAI JSpinner E DAL JComboBox
+        int eta = (int) spnEtà.getValue();
+        int altezza = (int) spnAltezza.getValue();
+        int peso = (int) spnPeso.getValue();
+        int nPiede = (int) spnPiede.getValue();
+        Taglia taglia = (Taglia) cmbTaglia.getSelectedItem();
+
+        // CONTROLLARE VALIDITà DI TUTTI I DATI
+        
+        
+        
+        // SCRIVERE SUI FILE CON IL NOME COGNOME E PW
+
     }//GEN-LAST:event_btnConfermaActionPerformed
+
+    private void cmbTagliaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTagliaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbTagliaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
