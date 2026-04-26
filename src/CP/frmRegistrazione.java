@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package chic.curtipasini;
+package CP;
 
 /**
  *
@@ -26,7 +26,7 @@ public class frmRegistrazione extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnlRegistrazione1 = new chic.curtipasini.pnlRegistrazione();
+        pnlRegistrazione1 = new CP.pannelli.pnlRegistrazione();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -86,6 +86,6 @@ public class frmRegistrazione extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private chic.curtipasini.pnlRegistrazione pnlRegistrazione1;
+    private CP.pannelli.pnlRegistrazione pnlRegistrazione1;
     // End of variables declaration//GEN-END:variables
 }

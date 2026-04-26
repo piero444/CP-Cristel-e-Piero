@@ -1,5 +1,5 @@
 
-package chic.curtipasini;
+package CP;
 
 public enum Taglia {
     S,

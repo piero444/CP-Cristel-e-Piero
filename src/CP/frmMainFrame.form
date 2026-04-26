@@ -40,7 +40,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="chic.curtipasini.pnlCredenziali" name="pnlCredenziali1">
+    <Component class="CP.pannelli.pnlCredenziali" name="pnlCredenziali1">
     </Component>
   </SubComponents>
 </Form>

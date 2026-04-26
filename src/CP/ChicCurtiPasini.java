@@ -1,4 +1,4 @@
-package chic.curtipasini;
+package CP;
 
 public class ChicCurtiPasini {
 

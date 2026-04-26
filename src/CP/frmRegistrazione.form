@@ -41,7 +41,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="chic.curtipasini.pnlRegistrazione" name="pnlRegistrazione1">
+    <Component class="CP.pannelli.pnlRegistrazione" name="pnlRegistrazione1">
     </Component>
   </SubComponents>
 </Form>

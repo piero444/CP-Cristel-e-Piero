@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package chic.curtipasini;
+package CP.pannelli;
 
 /**
  *
@@ -158,7 +158,7 @@ jTextField2.setForeground(java.awt.Color.GRAY);
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 458, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/chic/curtipasini/logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CP/logo.png"))); // NOI18N
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel1.setMaximumSize(new java.awt.Dimension(100, 100));
         jLabel1.setMinimumSize(new java.awt.Dimension(100, 100));

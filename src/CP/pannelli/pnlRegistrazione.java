@@ -1,18 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
-package chic.curtipasini;
 
-/**
- *
- * @author pc
- */
+package CP.pannelli;
+
+import CP.Taglia;
+
 public class pnlRegistrazione extends javax.swing.JPanel {
 
-    /**
-     * Creates new form pnlRegistrazione
-     */
     public pnlRegistrazione() {
         initComponents();
         // Colore di sfondo del pannello (F7F9F9 della tua palette)

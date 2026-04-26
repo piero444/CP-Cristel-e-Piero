@@ -1,5 +1,6 @@
-package chic.curtipasini;
+package CP.pannelli;
 
+import CP.Utenza;
 import eccezioni.CognomeNonValidoException;
 import eccezioni.EtaNonValidaException;
 import eccezioni.NomeNonValidoException;
@@ -132,6 +133,22 @@ public class pnlCredenziali extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    //  METDODI GET PER L'ASCOLTATORE
+    public String getNome() {
+        return Nome.getText();
+    }
+    public String getCognome() {
+        return Cognome.getText();
+    }
+    public int getEta() {
+        return (int)Età.getValue();
+    }
+    public String getPassword() {
+        return new String(PW.getPassword());
+    }
+
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //      AVANTI
 
@@ -142,10 +159,12 @@ public class pnlCredenziali extends javax.swing.JPanel {
 
         // CONTROLLARE VALIDITà DI TUTTI I DATI
         try {
+            
             Utenza.validazionePW(password);
             Utenza.controllaNome(nome);
             Utenza.controllaCognome(cognome);
             Utenza.controllaEta(eta);
+            
         } catch (PasswordNonValidaException ex) {
             //  INSERIRE JOptionPane
         } catch (EtaNonValidaException ex) {

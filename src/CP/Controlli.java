@@ -1,5 +1,5 @@
 
-package chic.curtipasini;
+package CP;
 
 import eccezioni.AltezzaNonValidaException;
 import eccezioni.CirconferenzaVitaNonValidaException;
