@@ -6,9 +6,9 @@ import eccezioni.CognomeNonValidoException;
 import eccezioni.EtaNonValidaException;
 import eccezioni.LarghezzaSpalleNonValidaException;
 import eccezioni.NomeNonValidoException;
-import eccezioni.NumeroPiedeNonValidoException;
 import eccezioni.TagliaNonValidaException;
 import eccezioni.PasswordNonValidaException;
+import eccezioni.PesoNonValidoException;
 
 import java.io.*;
 
@@ -19,32 +19,51 @@ public class Utenza {
     private int eta;   // da 0 a 99
     private int altezza;  // da 0 a 250
     private int peso;    // da 0 a 300
-    private int npiede;  // da 15 a 50 EU
     private Taglia tagliaAbituale;  //  S M L XL XXL
     private boolean sesso; // M - 0 F - 1  Bonus (Frigorifero)
     private double circonferenzaVita;   // da 0 a 120
     private double lunghezzaSpalle;  // da 0 a 180
 
+    // NUOVO ATTRIBUTO PER AUMENTO O PERDITA PESO
+    
+    
     private String password;  // min 4 max 8 (carattere grande e un numero)
     private static final int minPW = 4;
     private static final int maxPW = 8;
 
-    Utenza() {
-
+    
+    //  STABILIRE SE UTILE IL COSTRUTTORE CON TUTTI I PARAMETRI
+    public Utenza(String nome, String cognome, int eta, int altezza, int peso, Taglia tagliaAbituale, boolean sesso, double circonferenzaVita, double lunghezzaSpalle, String password)
+    {
+        this.nome = nome;
+        this.cognome = cognome;
+        this.eta = eta;
+        this.altezza = altezza;
+        this.peso = peso;
+        this.tagliaAbituale = tagliaAbituale;
+        this.sesso = sesso;
+        this.circonferenzaVita = circonferenzaVita;
+        this.lunghezzaSpalle = lunghezzaSpalle;
+        this.password = password;
+        
     }
 
-    public static boolean validazionePW(String pw) throws PasswordNonValidaException {
-        if (pw.length() > minPW && pw.length() < maxPW) {
+    Utenza() {
+    }
+        
+
+    public boolean validazionePW() throws PasswordNonValidaException {
+        if (password.length() > minPW && password.length() < maxPW) {
             // DIMENSIONE VALIDA
             int t = 0;    // VARIABILE CONTROLLO PRESENZA DI ALMENO UN CARATTERE MAIUSCOLO
             int t1 = 0;
-            for (int i = 0; i < pw.length(); i++) {
-                if (Character.isUpperCase(pw.charAt(i))) // è MAIUSCOLO ?
+            for (int i = 0; i < password.length(); i++) {
+                if (Character.isUpperCase(password.charAt(i))) // è MAIUSCOLO ?
                 {
                     // SI è MAIUSCOLA
                     t = 1;
                 }
-                if (Character.isDigit(pw.charAt(i))) //  è UN NUMERO ?
+                if (Character.isDigit(password.charAt(i))) //  è UN NUMERO ?
                 {
                     // SI è UN NUMERO
                     t1 = 1;
@@ -67,111 +86,8 @@ public class Utenza {
         }
     }
 
-    public void registrazione() {
-
-        nome = "Cristel";  //     GESTIRE TUTTI QUESTI ERRORI TRAMITE ECCEZIONI  
-        cognome = "Pasini";  // controllo no numeri caratteri strani ecc..
-        eta = 17;   // da 0 a 99
-        altezza = 102;  // da 0 a 250
-        peso = 50;    // da 0 a 300
-        npiede = 37;  // da 15 a 50 EU
-        tagliaAbituale = tagliaAbituale.S;  //  S M L XL XXL
-        sesso = true; // M - 0 F - 1  Bonus (Frigorifero)
-        circonferenzaVita = 100;   // da 0 a 120
-        lunghezzaSpalle = 120;
-        password = "Bastarda8";
-
-        try {
-            FileWriter f = new FileWriter("src/data/utenti/Registrati/" + nome + cognome + eta + ".txt");
-            PrintWriter fOUT = new PrintWriter(f);
-
-            fOUT.println(peso);
-            fOUT.println(npiede);
-            fOUT.println(tagliaAbituale);
-            fOUT.println(sesso);
-            fOUT.println(circonferenzaVita);
-            fOUT.println(lunghezzaSpalle);
-            fOUT.println(password);
-
-            fOUT.flush();
-            fOUT.close();
-        } catch (IOException e)// INPUT / OUTPUT
-        {
-            System.out.println("Errore di input output del file. ");
-        } catch (Exception e)// ECCEZIONE GENERALE
-        {
-            System.out.println("Si è riscontrato un problema ");
-        }
-
-        try {
-            FileWriter f = new FileWriter("src/data/utenti/Accedi/" + nome + cognome + eta + ".txt");
-            PrintWriter fOUT = new PrintWriter(f);
-            fOUT.println(password);
-
-            fOUT.flush();
-            fOUT.close();
-        } catch (IOException e) // INPUT / OUTPUT
-        {
-            System.out.println("Errore di input output del file. ");
-        } catch (Exception e) // ECCEZIONE GENERALE
-        {
-            System.out.println("Si è riscontrato un problema ");
-        }
-
-    }
-
-    public void leggiUtente() {
-
-        try {
-            FileReader f = new FileReader(nome + cognome + eta + ".txt");
-            BufferedReader fIN = new BufferedReader(f);
-
-            peso = Integer.parseInt(fIN.readLine());
-            npiede = Integer.parseInt(fIN.readLine());
-            tagliaAbituale = Taglia.valueOf(fIN.readLine());
-            sesso = Boolean.parseBoolean(fIN.readLine());
-            circonferenzaVita = Integer.parseInt(fIN.readLine());
-            lunghezzaSpalle = Integer.parseInt(fIN.readLine());
-
-        } catch (IOException e) {
-            System.out.println("Errore nell'apertura del file. ");
-        }
-
-    }
-
-    public void accedi() // i dati li prenderemo dal jtextfild 
-    {
-        nome = "Cristel";
-        cognome = "Pasini";
-        eta = 18;
-        password = "Cristel18";
-        File f = new File("src/data/utenti/Accedi/" + nome + cognome + eta + ".txt");
-
-        if (f.exists()) {  //  Il file esiste
-            try {
-                FileReader f1 = new FileReader("src/data/utenti/Accedi/" + nome + cognome + eta + ".txt");
-                BufferedReader fIN = new BufferedReader(f1);
-
-                for (int i = 0; i < 6; i++) {
-                    fIN.skip(fIN.readLine().length());
-                }
-
-                String p = fIN.readLine();
-                if (p.equals(password)) {
-                    // Accesso consentito
-                } else {
-                    // Accesso negato
-                }
-            } catch (IOException e) {
-                System.out.println("Errore nell'apertura del file. ");
-            }
-        } else {// File non trovato
-            // eccezione
-        }
-    }
-
     // IMPLEMENTAZIONE DEI METODI(INTERFACCIA) PER I CONTROLLI 
-    public static void controllaNome(String nome) throws NomeNonValidoException {
+    public void controllaNome() throws NomeNonValidoException {
         int t = 0; // è PRESENTE UN NUMERO
         for (int i = 0; i < nome.length(); i++) {
 
@@ -191,7 +107,7 @@ public class Utenza {
     }
 
     // controllo no numeri caratteri strani ecc..
-    public static void controllaCognome(String cognome) throws CognomeNonValidoException {
+    public void controllaCognome() throws CognomeNonValidoException {
         int t = 0; // è PRESENTE UN NUMERO
         for (int i = 0; i < cognome.length(); i++) {
 
@@ -210,9 +126,15 @@ public class Utenza {
     }
 
     //altezza da 0 a 250
-    public static void controllaAltezza(int altezza) throws AltezzaNonValidaException {
+    public void controllaAltezza() throws AltezzaNonValidaException {
         if (altezza < 0 || altezza > 250) {
             throw new AltezzaNonValidaException();
+        }
+    }
+    
+    public void controllaPeso() throws PesoNonValidoException {
+        if (peso < 0 || peso > 250) {
+            throw new PesoNonValidoException();
         }
     }
 
@@ -222,22 +144,99 @@ public class Utenza {
     }
 
     // da 0 a 99
-    public static void controllaEta(int eta) throws EtaNonValidaException {
+    public void controllaEta() throws EtaNonValidaException {
 
     }
 
     // da 0 a 120
-    public static void controllaLarghezzaS(int larghezza) throws LarghezzaSpalleNonValidaException {
+    public void controllaLarghezzaS() throws LarghezzaSpalleNonValidaException {
 
     }
 
-    // da 15 a 50 EU
-    public static void controllaNumeroP(int numero) throws NumeroPiedeNonValidoException {
+    public void controllaTaglia() throws TagliaNonValidaException {
 
     }
 
-    public static void controllaTaglia(Taglia taglia) throws TagliaNonValidaException {
-
+    //  METODI GET E SET
+    public String getNome() {
+        return nome;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getCognome() {
+        return cognome;
+    }
+
+    public void setCognome(String cognome) {
+        this.cognome = cognome;
+    }
+
+    public int getEta() {
+        return eta;
+    }
+
+    public void setEta(int eta) {
+        this.eta = eta;
+    }
+
+    public int getAltezza() {
+        return altezza;
+    }
+
+    public void setAltezza(int altezza) {
+        this.altezza = altezza;
+    }
+
+    public int getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
+
+    public Taglia getTagliaAbituale() {
+        return tagliaAbituale;
+    }
+
+    public void setTagliaAbituale(Taglia tagliaAbituale) {
+        this.tagliaAbituale = tagliaAbituale;
+    }
+
+    public boolean isSesso() {
+        return sesso;
+    }
+
+    public void setSesso(boolean sesso) {
+        this.sesso = sesso;
+    }
+
+    public double getCirconferenzaVita() {
+        return circonferenzaVita;
+    }
+
+    public void setCirconferenzaVita(double circonferenzaVita) {
+        this.circonferenzaVita = circonferenzaVita;
+    }
+
+    public double getLunghezzaSpalle() {
+        return lunghezzaSpalle;
+    }
+
+    public void setLunghezzaSpalle(double lunghezzaSpalle) {
+        this.lunghezzaSpalle = lunghezzaSpalle;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    
 }

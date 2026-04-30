@@ -4,27 +4,58 @@
  */
 package CP.pannelli;
 
+import CP.Listener;
+
 /**
  *
  * @author piero
  */
 public class pnlSchermata1 extends javax.swing.JPanel {
 
-    /**
-     * Creates new form pnlSchermata1
-     */
+    private String nome;
+    private String cognome;
+    private int eta;
+    private String password;
+    
+    // DICHIARO  E PRENDO DAL COSTRUTTORE LA CLASSE ASCOLTATORE
+    private Listener listener;
+    
+    public void setListener(Listener listener) {
+        this.listener = listener;
+    }
+    
+     //  METDODI GET PER L'ASCOLTATORE
+    public String getNome() {
+        return Nome.getText();
+    }
+    
+    public String getCognome() {
+        return Cognome.getText();
+    }
+    
+    public String getPassword() {
+        return new String(PW.getPassword());
+    }
+    
     public pnlSchermata1() {
         initComponents();
+        
+        jButton2.setActionCommand("Registrazione");
+        btnAccedi.setActionCommand("Accedi");
+        
+        
+        
+        
    // 1. Sfondo del pannello (il tuo bianco/grigio chiaro)
    this.setBackground(new java.awt.Color(247, 249, 249));
    // 2. Stile Bottone ACCEDI (Blu scuro)
-   jButton1.setBackground(new java.awt.Color(32, 129, 195));
-   jButton1.setForeground(java.awt.Color.WHITE);
-   jButton1.setFocusPainted(false);
-   jButton1.setBorderPainted(false); // Toglie il bordo brutto
-   jButton1.setContentAreaFilled(true);
-   jButton1.setOpaque(true);
-   jButton1.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
+   btnAccedi.setBackground(new java.awt.Color(32, 129, 195));
+   btnAccedi.setForeground(java.awt.Color.WHITE);
+   btnAccedi.setFocusPainted(false);
+   btnAccedi.setBorderPainted(false); // Toglie il bordo brutto
+   btnAccedi.setContentAreaFilled(true);
+   btnAccedi.setOpaque(true);
+   btnAccedi.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
    // 3. Stile Bottone REGISTRATI (Turchese)
    jButton2.setBackground(new java.awt.Color(120, 213, 215));
    jButton2.setForeground(java.awt.Color.WHITE);
@@ -33,8 +64,8 @@ public class pnlSchermata1 extends javax.swing.JPanel {
    jButton2.setFont(new java.awt.Font("Segoe UI", java.awt.Font.BOLD, 14));
    // 4. Modernizziamo i campi di testo (Togliamo l'effetto 3D brutto)
    javax.swing.border.Border lineBorder = javax.swing.BorderFactory.createLineBorder(new java.awt.Color(190, 216, 212), 1);
-   jTextField2.setBorder(lineBorder);
-   jTextField3.setBorder(lineBorder);
+   Nome.setBorder(lineBorder);
+   Cognome.setBorder(lineBorder);
 String nomeFile = "logo.jpg";
 try {
 
@@ -79,15 +110,15 @@ try {
 }
 // Sostituisci i nomi delle tue caselle (es. jTextField1)
 
-jTextField3.setText("Esempio: Rossi");// Cognome
-jTextField3.setForeground(java.awt.Color.GRAY);
-jTextField2.setText("Esempio: Mario");// Nome 
-jTextField2.setForeground(java.awt.Color.GRAY);
+Cognome.setText("Esempio: Rossi");// Cognome
+Cognome.setForeground(java.awt.Color.GRAY);
+Nome.setText("Esempio: Mario");// Nome 
+Nome.setForeground(java.awt.Color.GRAY);
 
  // Incolla qui sotto per il tocco chic
-   jTextField2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 1));
-   jTextField3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 1));
-   jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 1));
+   Nome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 1));
+   Cognome.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 1));
+   btnAccedi.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 1));
    jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255), 1));
    
   }   
@@ -102,47 +133,52 @@ jTextField2.setForeground(java.awt.Color.GRAY);
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField2 = new javax.swing.JTextField();
+        Nome = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        Cognome = new javax.swing.JTextField();
+        btnAccedi = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        PW = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(247, 249, 249));
         setForeground(new java.awt.Color(247, 249, 249));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField2.setMaximumSize(new java.awt.Dimension(250, 30));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        Nome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Nome.setMaximumSize(new java.awt.Dimension(250, 30));
+        Nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                NomeActionPerformed(evt);
             }
         });
-        add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 370, 28));
+        add(Nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, 370, 28));
 
         jLabel5.setText("Password");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 458, 25));
 
-        jTextField3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField3.setMaximumSize(new java.awt.Dimension(250, 30));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        Cognome.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Cognome.setMaximumSize(new java.awt.Dimension(250, 30));
+        Cognome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                CognomeActionPerformed(evt);
             }
         });
-        add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 370, 28));
+        add(Cognome, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 150, 370, 28));
 
-        jButton1.setText("Accedi");
-        jButton1.setMaximumSize(new java.awt.Dimension(250, 30));
-        jButton1.setMinimumSize(new java.awt.Dimension(250, 30));
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 458, -1));
+        btnAccedi.setText("Accedi");
+        btnAccedi.setMaximumSize(new java.awt.Dimension(250, 30));
+        btnAccedi.setMinimumSize(new java.awt.Dimension(250, 30));
+        btnAccedi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccediActionPerformed(evt);
+            }
+        });
+        add(btnAccedi, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 458, -1));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Non hai un account ?");
@@ -158,7 +194,7 @@ jTextField2.setForeground(java.awt.Color.GRAY);
         });
         add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 458, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/CP/logo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/logo.png"))); // NOI18N
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel1.setMaximumSize(new java.awt.Dimension(100, 100));
         jLabel1.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -167,7 +203,7 @@ jTextField2.setForeground(java.awt.Color.GRAY);
 
         jLabel4.setText("Cognome");
 
-        jPasswordField1.setText("jPasswordField1");
+        PW.setText("jPasswordField1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -180,7 +216,7 @@ jTextField2.setForeground(java.awt.Color.GRAY);
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PW, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31))
         );
         jPanel1Layout.setVerticalGroup(
@@ -196,7 +232,7 @@ jTextField2.setForeground(java.awt.Color.GRAY);
                         .addGap(54, 54, 54)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(4, 4, 4)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(PW, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(129, Short.MAX_VALUE))
         );
 
@@ -204,23 +240,29 @@ jTextField2.setForeground(java.awt.Color.GRAY);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       pnlRegistrazione reg = new pnlRegistrazione(); // Crea il nuovo pannello
-this.getParent().add(reg); // Lo aggiunge alla finestra principale
-reg.setVisible(true); // Lo rende visibile
-this.setVisible(false); // Nasconde il login
+       //    REGISTRATI
+       listener.actionPerformed(evt);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void NomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_NomeActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void CognomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CognomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_CognomeActionPerformed
+
+    private void btnAccediActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccediActionPerformed
+        //    ACCEDI
+       listener.actionPerformed(evt);
+    }//GEN-LAST:event_btnAccediActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTextField Cognome;
+    private javax.swing.JTextField Nome;
+    private javax.swing.JPasswordField PW;
+    private javax.swing.JButton btnAccedi;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
@@ -228,9 +270,6 @@ this.setVisible(false); // Nasconde il login
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 
     
